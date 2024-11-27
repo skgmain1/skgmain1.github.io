@@ -1,0 +1,98 @@
+/* Spinner Styles */
+.spinner {
+    width: 3em;
+    height: 3em;
+    cursor: not-allowed;
+    border-radius: 50%;
+    border: 2px solid #444;
+    box-shadow: -10px -10px 10px #6359f8, 0px -10px 10px 0px #6359f8, 
+                10px -10px 10px #453bd6, 10px 0 10px #453bd6, 
+                10px 10px 10px 0px #2419c5, 0 10px 10px 0px #2419c5, 
+                -10px 10px 10px 0px #800bec;
+    animation: rot55 0.7s linear infinite, fadeIn 1s ease-in forwards;
+    position: relative;
+    margin: 100px auto;
+}
+
+/* Spinner inner circle styles */
+.spinnerin {
+    border: 2px solid #444;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Keyframes for rotation animation */
+@keyframes rot55 {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fade-in effect for the spinner */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Body Styles */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #121212; /* Dark background color */
+    font-family: Arial, sans-serif;
+    flex-direction: column; /* Allows the RGB bar to sit at the top */
+    overflow: hidden; /* Prevents any scrollbars */
+}
+
+/* RGB Bar at the top with smooth movement and fade-in */
+.rgb-bar {
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, #6359f8, #453bd6, #2419c5, #800bec);
+    position: absolute;
+    top: 0;
+    animation: moveBar 10s linear infinite, fadeIn 1s ease-in forwards;
+}
+
+/* Spinner Container to center it properly */
+.spinner-container {
+    position: relative;
+    z-index: 1;
+}
+
+.spinner-container {
+    transition: opacity 0.5s ease;
+}
+
+
+/* Keyframes for the RGB bar movement */
+@keyframes moveBar {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+/* Fade-in animation for the RGB bar */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

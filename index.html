@@ -32,9 +32,35 @@
     <!-- Theme Color -->
     <meta name="theme-color" content="#5D3FD3">
 
-    <!-- Redirect -->
-    <meta http-equiv="refresh" content="0; url=https://discord.gg/expensivehub">
+    <!-- Link to External CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- RGB Bar -->
+    <div class="rgb-bar"></div>
+
+    <!-- Spinner -->
+    <div class="spinner-container" id="spinner">
+        <div class="spinner">
+            <div class="spinnerin"></div>
+        </div>
+    </div>
+
+    <!-- Redirect after 30 seconds -->
+    <script>
+        // Hide the spinner after 4 seconds
+        setTimeout(() => {
+            const spinner = document.getElementById('spinner');
+            spinner.style.opacity = '0';
+            setTimeout(() => {
+                spinner.style.display = 'none'; // Optional: Remove spinner from view
+            }, 500); // Allow transition effect before hiding completely
+        }, 4000); // 4 seconds
+
+        // Redirect after 30 seconds
+        setTimeout(() => {
+            window.location.href = "https://discord.gg/expensivehub";
+        }, 5000); // 5 seconds
+    </script>
 </body>
 </html>
