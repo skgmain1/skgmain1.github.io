@@ -1,66 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <!-- Character Encoding -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Expensive | Hub</title>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="./assets/EH.ico" type="image/x-icon">
-
-    <!-- Meta Tags -->
-    <meta name="title" content="Expensive Hub - The #1 Roblox Script Hub">
-    <meta name="description" content="Expensive Hub - Get Good">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Expensive Hub - The #1 Roblox Script Hub">
-    <meta property="og:description" content="Expensive Hub - Get Good">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://expensive.cc">
-    <meta property="og:image" content="https://github.com/skgmain1/skgmain1.github.io/blob/main/assets/embed-1080.png?raw=true">
-    <meta property="og:image:width" content="1920">
-    <meta property="og:image:height" content="1080">
-
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Expensive Hub - The #1 Roblox Script Hub">
-    <meta name="twitter:description" content="Expensive Hub - Get Good">
-    <meta name="twitter:image" content="https://github.com/skgmain1/skgmain1.github.io/blob/main/assets/embed-1080.png?raw=true">
-
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#5D3FD3">
-
-    <!-- Link to External CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <title>EXPENSIVE.CC - Премиум решения для Roblox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
 </head>
 <body>
-    <!-- RGB Bar -->
-    <div class="rgb-bar"></div>
+    <div class="stars-bg"></div>
+    <div class="interactive-gradient-bg"></div>
 
-    <!-- Spinner -->
-    <div class="spinner-container" id="spinner">
-        <div class="spinner">
-            <div class="spinnerin"></div>
+    <header class="header">
+        <div class="container header-container">
+            <a href="#hero" class="logo">EXPENSIVE.CC</a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#hero" class="nav-link active" data-translate-key="nav_home"><span>Главная</span></a></li>
+                    <li><a href="#features" class="nav-link" data-translate-key="nav_features"><span>Возможности</span></a></li>
+                    <li><a href="#pricing" class="nav-link" data-translate-key="nav_products"><span>Продукты</span></a></li>
+                </ul>
+            </nav>
+            <div class="lang-switcher">
+                 <button data-lang="ru" class="lang-button active" data-translate-key="lang_ru_aria" aria-label="Переключить на Русский">RU</button>
+                 <button data-lang="en" class="lang-button" data-translate-key="lang_en_aria" aria-label="Switch to English">EN</button>
+                 <button data-lang="es" class="lang-button" data-translate-key="lang_es_aria" aria-label="Cambiar a Español">ES</button>
+             </div>
+             <button class="burger-menu" data-translate-key="burger_aria_label" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span> <span></span> <span></span>
+            </button>
         </div>
-    </div>
+    </header>
 
-    <!-- Redirect after 30 seconds -->
-    <script>
-        // Hide the spinner after 4 seconds
-        setTimeout(() => {
-            const spinner = document.getElementById('spinner');
-            spinner.style.opacity = '0';
-            setTimeout(() => {
-                spinner.style.display = 'none'; // Optional: Remove spinner from view
-            }, 500); // Allow transition effect before hiding completely
-        }, 4000); // 4 seconds
+    <main>
+        <section class="hero" id="hero">
+             <div class="hero-background-parallax"></div>
+             <div class="container hero-content">
+                 <h1 class="hero-title animate-on-load stagger-letters" data-translate-key="hero_title">
+                    EXPENSIVE для <span class="highlight">Roblox</span>
+                 </h1>
+                 <p class="hero-subtitle animate-on-load fade-in-up delay-2" data-translate-key="hero_subtitle">
+                    Получи непревзойденное преимущество с нашими эксклюзивными возможностями.
+                 </p>
+                 <a href="#pricing" class="btn btn-cta animate-on-load fade-in-up delay-3 pulse-glow-cta" data-translate-key="hero_button">
+                    Выбрать План
+                 </a>
+             </div>
+            <a href="#features" class="scroll-down-indicator" data-translate-key="scroll_down_aria" aria-label="Scroll down">
+                 <span class="scroll-line"></span>
+             </a>
+        </section>
 
-        // Redirect after 30 seconds
-        setTimeout(() => {
-            window.location.href = "https://discord.gg/expensivehub";
-        }, 5000); // 5 seconds
-    </script>
+        <section class="features" id="features">
+            <div class="section-accent-line animate-on-scroll fade-in"></div>
+            <div class="container">
+                <h2 class="section-title animate-on-scroll slide-in-up-complex" data-translate-key="features_title">Почему EXPENSIVE.CC?</h2>
+                 <div class="features-grid">
+                     <div class="feature-card animate-on-scroll fancy-fade-in delay-1">
+                         <div class="feature-icon">🚀</div>
+                         <h3 data-translate-key="feature_speed_title">Невероятная Скорость</h3>
+                         <p data-translate-key="feature_speed_desc">Оптимизированные скрипты для максимальной производительности без лагов.</p>
+                         <div class="card-shine-effect"></div>
+                     </div>
+                    <div class="feature-card animate-on-scroll fancy-fade-in delay-2">
+                         <div class="feature-icon">🎨</div>
+                         <h3 data-translate-key="feature_custom_title">Полная Кастомизация</h3>
+                         <p data-translate-key="feature_custom_desc">Настраивай интерфейс и функции под свой уникальный стиль игры.</p>
+                         <div class="card-shine-effect"></div>
+                    </div>
+                    <div class="feature-card animate-on-scroll fancy-fade-in delay-3">
+                         <div class="feature-icon">🛡️</div>
+                         <h3 data-translate-key="feature_security_title">Безопасность Превыше Всего</h3>
+                         <p data-translate-key="feature_security_desc">Продвинутые методы обхода для минимизации рисков обнаружения.</p>
+                          <div class="card-shine-effect"></div>
+                    </div>
+                    <div class="feature-card animate-on-scroll fancy-fade-in delay-1">
+                         <div class="feature-icon">⚙️</div>
+                         <h3 data-translate-key="feature_functions_title">Обширный Функционал</h3>
+                         <p data-translate-key="feature_functions_desc">Все необходимые инструменты для доминирования в любом режиме Roblox.</p>
+                          <div class="card-shine-effect"></div>
+                    </div>
+                    <div class="feature-card animate-on-scroll fancy-fade-in delay-2">
+                         <div class="feature-icon">💡</div>
+                         <h3 data-translate-key="feature_updates_title">Постоянные Обновления</h3>
+                         <p data-translate-key="feature_updates_desc">Регулярные апдейты для поддержки актуальности и добавления новых фич.</p>
+                          <div class="card-shine-effect"></div>
+                    </div>
+                    <div class="feature-card animate-on-scroll fancy-fade-in delay-3">
+                          <div class="feature-icon">🤝</div>
+                          <h3 data-translate-key="feature_support_title">Отзывчивая Поддержка</h3>
+                          <p data-translate-key="feature_support_desc">Наша команда всегда готова помочь с любыми вопросами 24/7.</p>
+                          <div class="card-shine-effect"></div>
+                    </div>
+                 </div>
+             </div>
+        </section>
+
+        <section class="pricing" id="pricing">
+            <div class="section-accent-line animate-on-scroll fade-in"></div>
+            <div class="container">
+                 <h2 class="section-title animate-on-scroll slide-in-up-complex" data-translate-key="products_title">Наши Продукты</h2>
+                 <div class="pricing-grid">
+                     <div class="pricing-card product-card animate-on-scroll fancy-fade-in delay-1">
+                           <h3><span class="product-icon">💎</span> <span data-translate-key="product_exclusive_title">Exclusive Subscribe [One For All]</span> <span class="product-tag fire">🔥</span></h3>
+                           <div class="price-details"> <p><span data-translate-key="price_month">1 Месяц</span>: $35 / 3500 RUB</p> </div>
+                           <p class="payment-methods" data-translate-key="payment_discord">Приобретение через Discord</p>
+                           <button class="btn btn-primary btn-block buy-button" data-translate-key="buy_button" data-product-name-key="product_exclusive_title" data-product-key="product_exclusive_desc">Купить</button>
+                           <div class="card-shine-effect"></div>
+                      </div>
+                     <div class="pricing-card product-card popular animate-on-scroll fancy-fade-in delay-2">
+                           <span class="popular-badge" data-translate-key="popular_badge">Популярно</span>
+                           <h3><span class="product-icon">⚡</span> <span data-translate-key="product_aut_title">Expensive Hub AUT [v2 Basic]</span></h3>
+                           <div class="price-details"> <p><span data-translate-key="price_month">1 Месяц</span>: $5 / 500 RUB</p> <p><span data-translate-key="price_lifetime">Lifetime</span>: $15 / 1500 RUB</p> </div>
+                           <p class="payment-methods" data-translate-key="payment_discord">Приобретение через Discord</p>
+                           <button class="btn btn-cta btn-block buy-button" data-translate-key="buy_button" data-product-name-key="product_aut_title" data-product-key="product_aut_desc">Купить</button>
+                            <div class="card-shine-effect"></div>
+                      </div>
+                     <div class="pricing-card product-card animate-on-scroll fancy-fade-in delay-3">
+                           <h3><span class="product-icon">🌿</span> <span data-translate-key="product_farmv1_title">Resources Farm v1 Script</span></h3>
+                           <div class="price-details"> <p><span data-translate-key="price_month">1 Месяц</span>: $7.5 / 750 RUB</p> <p><span data-translate-key="price_lifetime">Lifetime</span>: $20 / 2000 RUB</p> </div>
+                           <p class="payment-methods" data-translate-key="payment_discord">Приобретение через Discord</p>
+                           <button class="btn btn-primary btn-block buy-button" data-translate-key="buy_button" data-product-name-key="product_farmv1_title" data-product-key="product_farmv1_desc">Купить</button>
+                           <div class="card-shine-effect"></div>
+                      </div>
+                     <div class="pricing-card product-card product-card--animated-gradient animate-on-scroll fancy-fade-in delay-4">
+                           <h3><span class="product-icon">⭐</span> <span data-translate-key="product_farmv2_title">Resources & Skins Farm v2</span></h3>
+                           <div class="price-details"> <p><span data-translate-key="price_month">1 Месяц</span>: $15 / 1500 RUB</p> <p><span data-translate-key="price_lifetime">Lifetime</span>: $40 / 4000 RUB</p> </div>
+                           <p class="payment-methods" data-translate-key="payment_discord">Приобретение через Discord</p>
+                           <button class="btn btn-primary btn-block buy-button" data-translate-key="buy_button" data-product-name-key="product_farmv2_title" data-product-key="product_farmv2_desc">Купить</button>
+                           <div class="card-shine-effect"></div>
+                      </div>
+                     <div class="pricing-card product-card animate-on-scroll fancy-fade-in delay-1">
+                           <h3><span class="product-icon">🚩</span> <span data-translate-key="product_level_title">Level Special Script</span></h3>
+                           <div class="price-details"> <p><span data-translate-key="price_month">1 Месяц</span>: $7.5 / 750 RUB</p> <p><span data-translate-key="price_lifetime">Lifetime</span>: $20 / 2000 RUB</p> </div>
+                           <p class="payment-methods" data-translate-key="payment_discord">Приобретение через Discord</p>
+                           <button class="btn btn-primary btn-block buy-button" data-translate-key="buy_button" data-product-name-key="product_level_title" data-product-key="product_level_desc">Купить</button>
+                           <div class="card-shine-effect"></div>
+                      </div>
+                    <div class="pricing-card product-card animate-on-scroll fancy-fade-in delay-2">
+                           <h3><span class="product-icon">🏮</span> <span data-translate-key="product_ghoul_title">Ghoul://RE Script</span></h3>
+                           <div class="price-details"> <p><span data-translate-key="price_month">1 Месяц</span>: $5 / 500 RUB</p> <p><span data-translate-key="price_lifetime">Lifetime</span>: $15 / 1500 RUB</p> </div>
+                           <p class="payment-methods" data-translate-key="payment_discord">Приобретение через Discord</p>
+                           <button class="btn btn-primary btn-block buy-button" data-translate-key="buy_button" data-product-name-key="product_ghoul_title" data-product-key="product_ghoul_desc">Купить</button>
+                            <div class="card-shine-effect"></div>
+                      </div>
+                     <div class="pricing-card product-card animate-on-scroll fancy-fade-in delay-3">
+                           <h3><span class="product-icon">⚽</span> <span data-translate-key="product_bluelock_title">Blue Lock:Rivals Script</span></h3>
+                           <div class="price-details"> <p><span data-translate-key="price_month">1 Месяц</span>: $5 / 500 RUB</p> <p><span data-translate-key="price_lifetime">Lifetime</span>: $15 / 1500 RUB</p> </div>
+                           <p class="payment-methods" data-translate-key="payment_discord">Приобретение через Discord</p>
+                           <button class="btn btn-primary btn-block buy-button" data-translate-key="buy_button" data-product-name-key="product_bluelock_title" data-product-key="product_bluelock_desc">Купить</button>
+                           <div class="card-shine-effect"></div>
+                      </div>
+                     <div class="pricing-card product-card animate-on-scroll fancy-fade-in delay-4">
+                           <h3><span class="product-icon">🌀</span> <span data-translate-key="product_jjk_title">JJK Script</span></h3>
+                           <div class="price-details"> <p><span data-translate-key="price_month">1 Месяц</span>: $5 / 500 RUB</p> <p><span data-translate-key="price_lifetime">Lifetime</span>: $15 / 1500 RUB</p> </div>
+                           <p class="payment-methods" data-translate-key="payment_discord">Приобретение через Discord</p>
+                           <button class="btn btn-primary btn-block buy-button" data-translate-key="buy_button" data-product-name-key="product_jjk_title" data-product-key="product_jjk_desc">Купить</button>
+                           <div class="card-shine-effect"></div>
+                      </div>
+                 </div>
+                  <p class="purchase-info animate-on-scroll fade-in delay-3">
+                     <span data-translate-key="requirements">Системные требования: Windows 10/11 x64. Требуется постоянное подключение к интернету.</span><br>
+                     <span data-translate-key="purchase_info_discord">Для покупки любого продукта, пожалуйста, перейдите в наш Discord сервер.</span><br>
+                     <span data-translate-key="questions">Возникли вопросы?</span> <a href="https://discord.gg/expensivehub" target="_blank" rel="noopener noreferrer" class="info-link pulse-glow-discord-link" data-translate-key="contact_support">Свяжитесь с поддержкой в Discord!</a> <span data-translate-key="check_terms">Ознакомьтесь с</span> <a href="#" class="info-link" id="terms-link" data-translate-key="terms_link">условиями использования</a>.
+                 </p>
+             </div>
+         </section>
+     </main>
+
+     <footer class="footer">
+          <div class="footer-content container">
+              <p>© 2025 EXPENSIVE.CC. <span data-translate-key="footer_rights">Все права защищены.</span></p>
+          </div>
+    </footer>
+
+    <div class="modal-overlay" id="product-modal-overlay"></div>
+    <div class="modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-product-title">
+          <button class="modal-close" id="modal-close-button" data-translate-key="modal_close_aria" aria-label="Закрыть окно">×</button>
+          <div class="modal-content">
+             <h3 class="modal-title" id="modal-product-title"></h3>
+              <div class="modal-body" id="modal-product-body">
+                   <p id="modal-product-description"></p>
+             </div>
+              <div class="modal-footer" id="modal-product-footer">
+                   <a href="https://discord.gg/expensivehub" target="_blank" rel="noopener noreferrer" id="discord-button" class="btn btn-discord pulse-glow-discord">
+                       <svg class="discord-logo-svg" aria-hidden="true" role="img" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M20.299 4.058A9.892 9.892 0 0014.05.718a.423.423 0 00-.389.117.442.442 0 00-.122.399v.01a13.75 13.75 0 00-3.078 0v-.01a.442.442 0 00-.122-.399.424.424 0 00-.389-.117 9.885 9.885 0 00-6.249 3.34.445.445 0 00-.01.638l.644.74a.45.45 0 00.378.14l.005-.001c.95-.25 1.818-.667 2.577-1.114a.424.424 0 01.486-.02 12.83 12.83 0 009.338 0 .425.425 0 01.487.02c.758.447 1.625.864 2.576 1.114l.006.001a.45.45 0 00.377-.14l.645-.74a.445.445 0 00-.01-.638zM17.738 11.055c-1.05 0-1.9.879-1.9 1.958s.85 1.958 1.9 1.958 1.9-.879 1.9-1.958-.849-1.958-1.9-1.958zm-11.476 0c-1.05 0-1.9.879-1.9 1.958s.85 1.958 1.9 1.958 1.9-.879 1.9-1.958-.849-1.958-1.9-1.958z"></path><path fill="currentColor" d="M19.078 14.737a13.438 13.438 0 01-2.575.77v-.008a5.75 5.75 0 001.634-2.367 1.002 1.002 0 00-.699-1.449 9.41 9.41 0 00-11.076 0 1 1 0 00-.7 1.449 5.75 5.75 0 001.634 2.367v.007a13.443 13.443 0 01-2.576-.77.45.45 0 00-.496.138l-.644.74a.452.452 0 00.067.668 13.725 13.725 0 003.55 2.408 10.016 10.016 0 001.94.765v.002a.45.45 0 00.438.459l.11.005a6.07 6.07 0 005.018 0l.11-.005a.45.45 0 00.439-.459v-.002a10.023 10.023 0 001.94-.765 13.73 13.73 0 003.55-2.408.452.452 0 00.068-.668l-.644-.74a.45.45 0 00-.496-.138z"></path></svg>
+                      <span data-translate-key="modal_discord_button">Присоединиться к Discord</span>
+                  </a>
+             </div>
+         </div>
+     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
