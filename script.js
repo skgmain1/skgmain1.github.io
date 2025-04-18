@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Translations Object (No changes needed here) ---
     const translations = {
         ru: {
             site_title: "EXPENSIVE.CC - Премиум Roblox Решения",
+            logo_text: "EXPENSIVE.CC",
             nav_home: "Главная",
             nav_features: "Возможности",
             nav_products: "Продукты",
@@ -26,27 +26,28 @@ document.addEventListener('DOMContentLoaded', () => {
             products_title: "Наши Продукты",
             price_month: "1 Месяц",
             price_lifetime: "Lifetime",
-            payment_discord: "Приобретение через Discord",
-            buy_button: "Купить", // Key for button text
+            payment_info: "Приобретение через Discord / FunPay",
+            buy_button: "Купить (Discord)",
+            button_funpay: "Купить (FunPay)",
             popular_badge: "Популярно",
             product_exclusive_title: "Exclusive Subscribe [One For All]",
-            product_exclusive_desc: "Полный доступ ко всем нашим текущим и будущим продуктам по единой подписке. Идеальный выбор для тех, кто хочет максимум возможностей. Нажмите кнопку ниже, чтобы перейти в Discord для уточнения деталей и покупки.",
+            product_exclusive_desc: "Полный доступ ко всем нашим текущим и будущим продуктам по единой подписке. Идеальный выбор для тех, кто хочет максимум возможностей.", // Discord desc
             product_aut_title: "Expensive Hub AUT [v2 Basic]",
-            product_aut_desc: "Базовая версия популярного хаба для A Universal Time (AUT). Содержит основные функции для комфортной игры и фарма. Нажмите кнопку ниже, чтобы перейти в Discord для покупки.",
+            product_aut_desc: "Базовая версия популярного хаба для A Universal Time (AUT). Содержит основные функции для комфортной игры и фарма.", // Discord desc
             product_farmv1_title: "Resources Farm v1 Script",
-            product_farmv1_desc: "Надежный скрипт первого поколения для автоматического фарма ресурсов в поддерживаемых играх. Простой и эффективный. Нажмите кнопку ниже, чтобы перейти в Discord для покупки.",
+            product_farmv1_desc: "Надежный скрипт первого поколения для автоматического фарма ресурсов в поддерживаемых играх. Простой и эффективный.", // Discord desc
             product_farmv2_title: "Resources & Skins Farm v2",
-            product_farmv2_desc: "Продвинутый скрипт v2 для фарма не только ресурсов, но и редких скинов. Больше возможностей и гибких настроек. Нажмите кнопку ниже, чтобы перейти в Discord для покупки.",
+            product_farmv2_desc: "Продвинутый скрипт v2 для фарма не только ресурсов, но и редких скинов. Больше возможностей и гибких настроек.", // Discord desc
             product_level_title: "Level Special Script",
-            product_level_desc: "Специализированный скрипт, заточенный под быструю и безопасную прокачку уровня вашего персонажа. Нажмите кнопку ниже, чтобы перейти в Discord для покупки.",
+            product_level_desc: "Специализированный скрипт, заточенный под быструю и безопасную прокачку уровня вашего персонажа.", // Discord desc
             product_ghoul_title: "Ghoul://RE Script",
-            product_ghoul_desc: "Мощный скрипт для доминирования в игре Ghoul://RE. Включает фарм, авто-квесты и PvP функции. Нажмите кнопку ниже, чтобы перейти в Discord для покупки.",
+            product_ghoul_desc: "Мощный скрипт для доминирования в игре Ghoul://RE. Включает фарм, авто-квесты и PvP функции.", // Discord desc
             product_bluelock_title: "Blue Lock:Rivals Script",
-            product_bluelock_desc: "Получите преимущество в Blue Lock:Rivals с нашим скриптом, включающим аимбот, авто-фарм и другие полезные функции. Нажмите кнопку ниже, чтобы перейти в Discord для покупки.",
+            product_bluelock_desc: "Получите преимущество в Blue Lock:Rivals с нашим скриптом, включающим аимбот, авто-фарм и другие полезные функции.", // Discord desc
             product_jjk_title: "JJK Script",
-            product_jjk_desc: "Скрипт для популярной игры по Jujutsu Kaisen. Авто-фарм проклятой энергии, предметов и многое другое. Нажмите кнопку ниже, чтобы перейти в Discord для покупки.",
+            product_jjk_desc: "Скрипт для популярной игры по Jujutsu Kaisen. Авто-фарм проклятой энергии, предметов и многое другое.", // Discord desc
             requirements: "Системные требования: Windows 10/11 x64. Требуется постоянное подключение к интернету.",
-            purchase_info_discord: "Для покупки любого продукта, пожалуйста, перейдите в наш Discord сервер.",
+            purchase_info_discord: "Для покупки любого продукта, пожалуйста, перейдите в наш Discord сервер или воспользуйтесь FunPay.",
             questions: "Возникли вопросы?",
             contact_support: "Свяжитесь с поддержкой в Discord!",
             check_terms: "Ознакомьтесь с",
@@ -54,9 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_rights: "Все права защищены.",
             scroll_down_aria: "Прокрутить вниз",
             burger_aria_label: "Переключить навигацию",
-            modal_confirm_title: "Подтверждение покупки",
-            modal_default_desc: "Пожалуйста, перейдите в наш Discord сервер для завершения покупки и получения инструкций.",
+            modal_discord_title: "Приобретение через Discord: {productName}",
+            modal_discord_desc: "Пожалуйста, перейдите в наш Discord сервер для завершения покупки и получения инструкций по продукту {productName}.",
             modal_discord_button: "Присоединиться к Discord",
+            modal_funpay_title: "Приобретение через FunPay: {productName}",
+            modal_funpay_desc: "Выберите нужный срок подписки для {productName} и перейдите по ссылке для оплаты через FunPay. После оплаты вы получите товар и инструкции.",
+            modal_funpay_button_month: "Купить (1 Месяц)",
+            modal_funpay_button_lifetime: "Купить (Lifetime)",
             modal_close_aria: "Закрыть окно",
             lang_ru_aria: "Переключить на Русский",
             lang_en_aria: "Switch to English",
@@ -64,11 +69,12 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         en: {
             site_title: "EXPENSIVE.CC - Premium Roblox Solutions",
+            logo_text: "EXPENSIVE.CC",
             nav_home: "Home",
             nav_features: "Features",
             nav_products: "Products",
             hero_title: "EXPENSIVE for Roblox",
-            hero_subtitle: "Farm more, farm better, farm smarter. Dominate every game with unparalleled efficiency.", // Updated
+            hero_subtitle: "Farm more, farm better, farm smarter. Dominate every game with unparalleled efficiency.",
             hero_button: "Choose Plan",
             features_title: "Why EXPENSIVE.CC?",
             feature_speed_title: "Incredible Speed",
@@ -86,27 +92,28 @@ document.addEventListener('DOMContentLoaded', () => {
             products_title: "Our Products",
             price_month: "1 Month",
             price_lifetime: "Lifetime",
-            payment_discord: "Purchase via Discord",
-            buy_button: "Buy", // Key for button text
+            payment_info: "Purchase via Discord / FunPay",
+            buy_button: "Buy (Discord)",
+            button_funpay: "Buy (FunPay)",
             popular_badge: "Popular",
             product_exclusive_title: "Exclusive Subscribe [One For All]",
-            product_exclusive_desc: "Full access to all our current and future products with a single subscription. Ideal for those who want maximum capabilities. Click the button below to go to Discord for details and purchase.",
+            product_exclusive_desc: "Full access to all our current and future products with a single subscription. Ideal for those who want maximum capabilities.",
             product_aut_title: "Expensive Hub AUT [v2 Basic]",
-            product_aut_desc: "Basic version of the popular hub for A Universal Time (AUT). Contains essential features for comfortable gameplay and farming. Click the button below to go to Discord for purchase.",
+            product_aut_desc: "Basic version of the popular hub for A Universal Time (AUT). Contains essential features for comfortable gameplay and farming.",
             product_farmv1_title: "Resources Farm v1 Script",
-            product_farmv1_desc: "Reliable first-generation script for automatic resource farming in supported games. Simple and effective. Click the button below to go to Discord for purchase.",
+            product_farmv1_desc: "Reliable first-generation script for automatic resource farming in supported games. Simple and effective.",
             product_farmv2_title: "Resources & Skins Farm v2",
-            product_farmv2_desc: "Advanced v2 script for farming not only resources but also rare skins. More features and flexible settings. Click the button below to go to Discord for purchase.",
+            product_farmv2_desc: "Advanced v2 script for farming not only resources but also rare skins. More features and flexible settings.",
             product_level_title: "Level Special Script",
-            product_level_desc: "A specialized script designed for fast and safe leveling of your character. Click the button below to go to Discord for purchase.",
+            product_level_desc: "A specialized script designed for fast and safe leveling of your character.",
             product_ghoul_title: "Ghoul://RE Script",
-            product_ghoul_desc: "Powerful script for dominating the Ghoul://RE game. Includes farming, auto-quests, and PvP functions. Click the button below to go to Discord for purchase.",
+            product_ghoul_desc: "Powerful script for dominating the Ghoul://RE game. Includes farming, auto-quests, and PvP functions.",
             product_bluelock_title: "Blue Lock:Rivals Script",
-            product_bluelock_desc: "Get an edge in Blue Lock:Rivals with our script featuring aimbot, auto-farm, and other useful functions. Click the button below to go to Discord for purchase.",
+            product_bluelock_desc: "Get an edge in Blue Lock:Rivals with our script featuring aimbot, auto-farm, and other useful functions.",
             product_jjk_title: "JJK Script",
-            product_jjk_desc: "Script for the popular Jujutsu Kaisen game. Auto-farm cursed energy, items, and much more. Click the button below to go to Discord for purchase.",
+            product_jjk_desc: "Script for the popular Jujutsu Kaisen game. Auto-farm cursed energy, items, and much more.",
             requirements: "System Requirements: Windows 10/11 x64. Requires a persistent internet connection.",
-            purchase_info_discord: "To purchase any product, please proceed to our Discord server.",
+            purchase_info_discord: "To purchase any product, please proceed to our Discord server or use FunPay.",
             questions: "Have questions?",
             contact_support: "Contact support on Discord!",
             check_terms: "Review the",
@@ -114,77 +121,86 @@ document.addEventListener('DOMContentLoaded', () => {
             footer_rights: "All rights reserved.",
             scroll_down_aria: "Scroll down",
             burger_aria_label: "Toggle navigation",
-            modal_confirm_title: "Confirm Purchase",
-            modal_default_desc: "Please proceed to our Discord server to complete the purchase and receive instructions.",
+            modal_discord_title: "Purchase via Discord: {productName}",
+            modal_discord_desc: "Please proceed to our Discord server to complete the purchase and receive instructions for {productName}.",
             modal_discord_button: "Join Discord",
+            modal_funpay_title: "Purchase via FunPay: {productName}",
+            modal_funpay_desc: "Select the desired subscription term for {productName} and follow the link to pay via FunPay. After payment, you will receive the product and instructions.",
+            modal_funpay_button_month: "Buy (1 Month)",
+            modal_funpay_button_lifetime: "Buy (Lifetime)",
             modal_close_aria: "Close window",
-            lang_ru_aria: "Переключить на Русский",
+            lang_ru_aria: "Switch to Russian",
             lang_en_aria: "Switch to English",
-            lang_es_aria: "Cambiar a Español",
+            lang_es_aria: "Switch to Spanish",
         },
         es: {
             site_title: "EXPENSIVE.CC - Soluciones Roblox Premium",
-            nav_home: "Inicio",
-            nav_features: "Características",
-            nav_products: "Productos",
-            hero_title: "EXPENSIVE para Roblox",
-            hero_subtitle: "Farmea más, farmea mejor, farmea con calidad. Domina cada juego con una eficiencia inigualable.", // Updated
-            hero_button: "Elegir Plan",
-            features_title: "¿Por qué EXPENSIVE.CC?",
-            feature_speed_title: "Velocidad Increíble",
-            feature_speed_desc: "Scripts optimizados para máximo rendimiento sin lag.",
-            feature_custom_title: "Personalización Total",
-            feature_custom_desc: "Personaliza la interfaz y funciones a tu estilo de juego único.",
-            feature_security_title: "Seguridad Ante Todo",
-            feature_security_desc: "Métodos avanzados de evasión para minimizar riesgos de detección.",
-            feature_functions_title: "Funcionalidad Amplia",
-            feature_functions_desc: "Todas las herramientas necesarias para dominar cualquier modo de Roblox.",
-            feature_updates_title: "Actualizaciones Constantes",
-            feature_updates_desc: "Actualizaciones regulares para mantener relevancia y añadir nuevas funciones.",
-            feature_support_title: "Soporte Receptivo",
-            feature_support_desc: "Nuestro equipo siempre está listo para ayudar con cualquier pregunta 24/7.",
-            products_title: "Nuestros Productos",
-            price_month: "1 Mes",
-            price_lifetime: "Permanente",
-            payment_discord: "Compra vía Discord",
-            buy_button: "Comprar", // Key for button text
-            popular_badge: "Popular",
-            product_exclusive_title: "Suscripción Exclusiva [Uno Para Todos]",
-            product_exclusive_desc: "Acceso completo a todos nuestros productos actuales y futuros con una única suscripción. Ideal para quienes desean las máximas capacidades. Haz clic en el botón de abajo para ir a Discord para obtener detalles y comprar.",
-            product_aut_title: "Expensive Hub AUT [v2 Básico]",
-            product_aut_desc: "Versión básica del popular hub para A Universal Time (AUT). Contiene funciones esenciales para un juego y farmeo cómodos. Haz clic en el botón de abajo para ir a Discord y comprar.",
-            product_farmv1_title: "Script Granja Recursos v1",
-            product_farmv1_desc: "Script fiable de primera generación para el farmeo automático de recursos en juegos compatibles. Simple y efectivo. Haz clic en el botón de abajo para ir a Discord y comprar.",
-            product_farmv2_title: "Granja Recursos y Skins v2",
-            product_farmv2_desc: "Script avanzado v2 para farmear no solo recursos sino también skins raras. Más funciones y configuraciones flexibles. Haz clic en el botón de abajo para ir a Discord y comprar.",
-            product_level_title: "Script Especial de Nivel",
-            product_level_desc: "Un script especializado diseñado para subir de nivel a tu personaje de forma rápida y segura. Haz clic en el botón de abajo para ir a Discord y comprar.",
-            product_ghoul_title: "Script Ghoul://RE",
-            product_ghoul_desc: "Potente script para dominar el juego Ghoul://RE. Incluye farmeo, misiones automáticas y funciones PvP. Haz clic en el botón de abajo para ir a Discord y comprar.",
-            product_bluelock_title: "Script Blue Lock:Rivals",
-            product_bluelock_desc: "Obtén ventaja en Blue Lock:Rivals con nuestro script que incluye aimbot, auto-farmeo y otras funciones útiles. Haz clic en el botón de abajo para ir a Discord y comprar.",
-            product_jjk_title: "Script JJK",
-            product_jjk_desc: "Script para el popular juego de Jujutsu Kaisen. Auto-farmeo de energía maldita, objetos y mucho más. Haz clic en el botón de abajo para ir a Discord y comprar.",
-            requirements: "Requisitos del sistema: Windows 10/11 x64. Requiere conexión a internet persistente.",
-            purchase_info_discord: "Para comprar cualquier producto, por favor dirígete a nuestro servidor de Discord.",
-            questions: "¿Tienes preguntas?",
-            contact_support: "¡Contacta con soporte en Discord!",
-            check_terms: "Revisa los",
-            terms_link: "términos de uso",
-            footer_rights: "Todos los derechos reservados.",
+            logo_text: "EXPENSIVE.CC",
+             nav_home: "Inicio",
+             nav_features: "Características",
+             nav_products: "Productos",
+             hero_title: "EXPENSIVE para Roblox",
+             hero_subtitle: "Farmea más, farmea mejor, farmea con calidad. Domina cada juego con una eficiencia inigualable.",
+             hero_button: "Elegir Plan",
+             features_title: "¿Por qué EXPENSIVE.CC?",
+             feature_speed_title: "Velocidad Increíble",
+             feature_speed_desc: "Scripts optimizados para máximo rendimiento sin lag.",
+             feature_custom_title: "Personalización Total",
+             feature_custom_desc: "Personaliza la interfaz y funciones a tu estilo de juego único.",
+             feature_security_title: "Seguridad Ante Todo",
+             feature_security_desc: "Métodos avanzados de evasión para minimizar riesgos de detección.",
+             feature_functions_title: "Funcionalidad Amplia",
+             feature_functions_desc: "Todas las herramientas necesarias para dominar cualquier modo de Roblox.",
+             feature_updates_title: "Actualizaciones Constantes",
+             feature_updates_desc: "Actualizaciones regulares para mantener relevancia y añadir nuevas funciones.",
+             feature_support_title: "Soporte Receptivo",
+             feature_support_desc: "Nuestro equipo siempre está listo para ayudar con cualquier pregunta 24/7.",
+             products_title: "Nuestros Productos",
+             price_month: "1 Mes",
+             price_lifetime: "Permanente",
+             payment_info: "Compra vía Discord / FunPay",
+             buy_button: "Comprar (Discord)",
+             button_funpay: "Comprar (FunPay)",
+             popular_badge: "Popular",
+             product_exclusive_title: "Suscripción Exclusiva [Uno Para Todos]",
+             product_exclusive_desc: "Acceso completo a todos nuestros productos actuales y futuros con una única suscripción. Ideal para quienes desean las máximas capacidades.",
+             product_aut_title: "Expensive Hub AUT [v2 Básico]",
+             product_aut_desc: "Versión básica del popular hub para A Universal Time (AUT). Contiene funciones esenciales para un juego y farmeo cómodos.",
+             product_farmv1_title: "Script Granja Recursos v1",
+             product_farmv1_desc: "Script fiable de primera generación para el farmeo automático de recursos en juegos compatibles. Simple y efectivo.",
+             product_farmv2_title: "Granja Recursos y Skins v2",
+             product_farmv2_desc: "Script avanzado v2 para farmear no solo recursos sino también skins raras. Más funciones y configuraciones flexibles.",
+             product_level_title: "Script Especial de Nivel",
+             product_level_desc: "Un script especializado diseñado para subir de nivel a tu personaje de forma rápida y segura.",
+             product_ghoul_title: "Script Ghoul://RE",
+             product_ghoul_desc: "Potente script para dominar el juego Ghoul://RE. Incluye farmeo, misiones automáticas y funciones PvP.",
+             product_bluelock_title: "Script Blue Lock:Rivals",
+             product_bluelock_desc: "Obtén ventaja en Blue Lock:Rivals con nuestro script que incluye aimbot, auto-farmeo y otras funciones útiles.",
+             product_jjk_title: "Script JJK",
+             product_jjk_desc: "Script para el popular juego de Jujutsu Kaisen. Auto-farmeo de energía maldita, objetos y mucho más.",
+             requirements: "Requisitos del sistema: Windows 10/11 x64. Requiere conexión a internet persistente.",
+             purchase_info_discord: "Para comprar cualquier producto, por favor dirígete a nuestro servidor de Discord o usa FunPay.",
+             questions: "¿Tienes preguntas?",
+             contact_support: "¡Contacta con soporte en Discord!",
+             check_terms: "Revisa los",
+             terms_link: "términos de uso",
+             footer_rights: "Todos los derechos reservados.",
              scroll_down_aria: "Desplazarse hacia abajo",
              burger_aria_label: "Alternar navegación",
-             modal_confirm_title: "Confirmar Compra",
-             modal_default_desc: "Por favor, dirígete a nuestro servidor de Discord para completar la compra y recibir instrucciones.",
+             modal_discord_title: "Compra vía Discord: {productName}",
+             modal_discord_desc: "Por favor, dirígete a nuestro servidor de Discord para completar la compra y recibir instrucciones para {productName}.",
              modal_discord_button: "Unirse a Discord",
+             modal_funpay_title: "Compra vía FunPay: {productName}",
+             modal_funpay_desc: "Selecciona el plazo de suscripción deseado para {productName} y sigue el enlace para pagar a través de FunPay. Tras el pago, recibirás el producto y las instrucciones.",
+             modal_funpay_button_month: "Comprar (1 Mes)",
+             modal_funpay_button_lifetime: "Comprar (Lifetime)",
              modal_close_aria: "Cerrar ventana",
-             lang_ru_aria: "Переключить на Русский",
-             lang_en_aria: "Switch to English",
+             lang_ru_aria: "Cambiar a Ruso",
+             lang_en_aria: "Cambiar a Inglés",
              lang_es_aria: "Cambiar a Español",
         }
     };
 
-    // --- DOM Elements Cache (No changes needed) ---
     const Cache = {
         html: document.documentElement,
         body: document.body,
@@ -207,9 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
             closeBtn: document.getElementById('modal-close-button'),
             title: document.getElementById('modal-product-title'),
             description: document.getElementById('modal-product-description'),
-            discordBtn: document.getElementById('discord-button'),
+            footer: document.getElementById('modal-product-footer'),
+            borderGlow: document.querySelector('.modal-border-glow'),
         },
-        buyButtons: document.querySelectorAll('.buy-button'),
+        productButtons: document.querySelectorAll('.buy-button, .funpay-button'),
+        discordButtonTemplate: document.getElementById('discord-button-template'),
         termsLink: document.getElementById('terms-link'),
         tiltContainers: document.querySelectorAll('.card-tilt-container'),
         staggerElements: document.querySelectorAll('.stagger-letters'),
@@ -217,7 +235,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loadAnimElements: document.querySelectorAll('.animate-on-load'),
     };
 
-    // --- State (No changes needed) ---
     let state = {
         currentLang: 'ru',
         staggerObservers: [],
@@ -225,17 +242,21 @@ document.addEventListener('DOMContentLoaded', () => {
         rafMouseBgPending: false,
         rafScrollPending: false,
         rafTiltPending: {},
+        rafModalGlowPending: false,
         mouseX: window.innerWidth / 2,
         mouseY: window.innerHeight / 2,
         targetMouseX: window.innerWidth / 2,
         targetMouseY: window.innerHeight / 2,
+        modalMouseX: 0,
+        modalMouseY: 0,
+        targetModalMouseX: 0,
+        targetModalMouseY: 0,
         lastModalTrigger: null,
         isNavOpen: false,
         isModalOpen: false,
         lastScrollY: window.pageYOffset,
     };
 
-    // --- Utils (No changes needed) ---
     const getScrollbarWidth = () => {
         const outer = document.createElement('div');
         outer.style.cssText = 'visibility:hidden; width: 100px; overflow:scroll;';
@@ -246,19 +267,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const lerp = (start, end, amount) => start * (1 - amount) + end * amount;
 
-    // --- Core Logic ---
+    const getTranslation = (key, lang = state.currentLang, replacements = {}) => {
+         let text = translations[lang]?.[key] || translations.ru?.[key] || `[${key}]`;
+         for (const placeholder in replacements) {
+             text = text.replace(`{${placeholder}}`, replacements[placeholder]);
+         }
+         return text;
+    }
 
-    // Stagger Animation Logic (No changes needed from previous version)
     const initStaggerAnimation = () => {
         state.staggerObservers.forEach(obs => obs.disconnect());
         state.staggerObservers = [];
         Cache.staggerElements.forEach(wrapper => {
             const key = wrapper.dataset.translateKey;
-            const text = translations[state.currentLang]?.[key]
-                         || translations.ru?.[key]
-                         || wrapper.textContent
-                         || '';
-            if (!text) return;
+            const text = getTranslation(key);
+            if (!text || text.startsWith('[')) return;
 
             let html = '';
              if (key === 'hero_title' && text.includes('Roblox')) {
@@ -288,99 +311,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // --- !!! REVISED setLanguage Function !!! ---
     const setLanguage = (lang) => {
         state.currentLang = translations[lang] ? lang : 'ru';
         Cache.html.lang = state.currentLang;
 
-        // --- Update all translatable elements ---
         Cache.translatables.forEach(el => {
             const key = el.dataset.translateKey;
-            const translation = translations[state.currentLang]?.[key] || translations.ru?.[key];
+            if (!key || el.id === 'modal-close-button') return; // Skip if no key or it's the close button
 
-            if (!translation) return; // Skip if no translation
+            const translation = getTranslation(key);
+            if (translation.startsWith('[')) return;
 
-            // --- Handle different element types ---
-
-            // 1. Aria-labels (always update if present)
+            // Specific updates
             if (el.hasAttribute('aria-label')) {
-                el.setAttribute('aria-label', translation);
+                 // For lang buttons, aria labels change with selected language
+                 if (el.classList.contains('lang-button')) {
+                    const ariaKey = `lang_${el.dataset.lang}_aria`;
+                    el.setAttribute('aria-label', getTranslation(ariaKey));
+                 } else {
+                     el.setAttribute('aria-label', translation);
+                 }
             }
-
-            // 2. Input placeholders
-            if (el.tagName === 'INPUT' && 'placeholder' in el) {
-                 el.placeholder = translation;
+            else if (el.matches('.nav-link > span, .btn-discord > span, .modal-footer .btn > span')) el.textContent = translation;
+            else if (el.matches('.buy-button[data-modal-type=\'discord\']')) el.textContent = getTranslation('buy_button');
+            else if (el.matches('.funpay-button[data-modal-type=\'funpay\']')) el.textContent = getTranslation('button_funpay');
+            else if (el.matches('.product-title')) {
+                const titleSpan = el.querySelector(`span[data-translate-key="${key}"]`);
+                if (titleSpan) titleSpan.textContent = translation;
             }
-            // 3. Elements with dedicated inner SPAN for text (e.g., nav links, Discord button)
-            else if (el.matches('.nav-link') || el.matches('.btn-discord')) {
-                const span = el.querySelector('span'); // Find the first span inside
-                if (span) span.textContent = translation;
-            }
-            // 4. Product Titles (use the specific span with data-translate-key)
-            else if (el.classList.contains('product-title')) {
-                const textSpan = el.querySelector('span[data-translate-key]');
-                if (textSpan) textSpan.textContent = translation;
-            }
-            // 5. Buttons (set textContent directly, e.g., Buy Buttons, Hero CTA)
-            else if (el.matches('.buy-button') || el.matches('.btn-cta') || el.matches('.lang-button')) {
-                 // Make sure it's not the language switcher button text itself, just aria was handled above
-                if (!key.startsWith('lang_')) {
-                    el.textContent = translation;
-                     // If it's the lang button, restore its code (RU/EN/ES)
-                    if (el.classList.contains('lang-button')) {
-                       el.textContent = el.dataset.lang.toUpperCase();
+            // General text content update, avoiding complex elements or those handled above
+            else if (!el.matches('.stagger-letters') && !el.classList.contains('lang-button') && !el.closest('.product-buttons') && !el.closest('.modal-footer')) {
+                if (el.matches('p, h3[data-translate-key], h2, .popular-badge, .price-label, .price-value, .payment-methods, .info-link, .footer span, .purchase-info span, .logo, .btn-cta')) {
+                    // Simple text content update if no significant children or it's an allowed container
+                    if (el.children.length === 0 || el.matches('.logo, .btn-cta, .popular-badge') || (el.children.length === 1 && el.children[0].tagName === 'SPAN' && !el.children[0].dataset.translateKey) ){
+                         el.textContent = translation;
                     }
                 }
             }
-             // 6. Simple text elements (paragraphs, feature descriptions, list items etc.)
-             // Be careful with selectors here to avoid overwriting complex structures
-             else if (el.matches('p, h3, h2, .popular-badge, .price-label, .price-value, .payment-methods, .info-link, .footer span, .purchase-info span, #modal-product-title, .logo')) {
-                // Don't update if it's part of a complex structure handled above (like product title h3)
-                // or if it contains other elements (basic check)
-                 if (!el.closest('.product-title') && !el.querySelector('*') && el.textContent.trim() !== '') {
-                     el.textContent = translation;
-                 } else if (el.matches('#modal-product-title')) { // Always update modal title
-                     el.textContent = translation;
-                 } else if (el.matches('.logo')) { // Logo text can be updated
-                     el.textContent = translation; // Since it uses background-clip, direct update is fine
-                 } else if (el.matches('h3[data-translate-key^="feature_"]')) { // Feature card titles
-                    el.textContent = translation;
-                 } else if (el.matches('.popular-badge, .price-label, .price-value, .payment-methods, .footer span, .purchase-info span')) {
-                     el.textContent = translation; // Safe to update these simple elements
-                 }
-             }
-
-            // Exclude elements handled by stagger animation
-            // Stagger elements update their content via initStaggerAnimation call below
-
         });
 
-        // --- Update Language Switcher Button States ---
         Cache.lang.buttons.forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === state.currentLang);
-             // Update aria-label (already done in the loop above, but ensure it's set)
-             const ariaKey = `lang_${btn.dataset.lang}_aria`;
-             const ariaLabel = translations[state.currentLang]?.[ariaKey] || translations.ru?.[ariaKey] || '';
-             if (ariaLabel) btn.setAttribute('aria-label', ariaLabel);
-             // Ensure button text remains RU/EN/ES
-            btn.textContent = btn.dataset.lang.toUpperCase();
+            const ariaLabel = getTranslation(`lang_${btn.dataset.lang}_aria`);
+            btn.setAttribute('aria-label', ariaLabel); // Update aria label on language change
+            btn.textContent = btn.dataset.lang.toUpperCase(); // Keep button text RU/EN/ES
         });
 
-        // --- Update Page Title ---
-        document.title = translations[state.currentLang]?.site_title || translations.ru.site_title;
+        document.title = getTranslation('site_title');
+        const closeButtonAriaKey = "modal_close_aria";
+        Cache.modal.closeBtn?.setAttribute('aria-label', getTranslation(closeButtonAriaKey)); // Update close button aria
 
-        // --- Save Preference ---
+
         try { localStorage.setItem('preferredLang', state.currentLang); } catch (e) {}
-
-        // --- Re-initialize Stagger Animation for new text ---
         initStaggerAnimation();
-        updateActiveLink(); // Update nav link highlight
+        updateActiveLink();
     };
 
 
-    // --- Scroll Lock Logic (No changes needed) ---
     const updateBodyScrollLock = () => {
-        state.isModalOpen = Cache.modal.element?.classList.contains('active');
+        state.isModalOpen = Cache.modal.element.classList.contains('active');
         state.isNavOpen = Cache.nav.list?.classList.contains('active');
         const shouldLock = state.isModalOpen || state.isNavOpen;
 
@@ -393,32 +382,133 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- Modal Actions (No changes needed) ---
-    const openModal = (productNameKey, productDescKey) => {
-        const title = translations[state.currentLang]?.[productNameKey] || translations.ru?.[productNameKey] || translations[state.currentLang]?.modal_confirm_title || translations.ru.modal_confirm_title;
-        const desc = translations[state.currentLang]?.[productDescKey] || translations.ru?.[productDescKey] || translations[state.currentLang]?.modal_default_desc || translations.ru.modal_default_desc;
+    const displayModalContent = (type, nameKey, descKeyOrProduct, monthUrl = '', lifetimeUrl = '') => {
+         const productName = getTranslation(nameKey);
 
-        Cache.modal.title.textContent = title;
-        Cache.modal.description.textContent = desc;
-        Cache.modal.overlay.classList.add('active');
-        Cache.modal.element.classList.add('active');
-        updateBodyScrollLock();
-        requestAnimationFrame(() => {
-            const focusTarget = Cache.modal.closeBtn || Cache.modal.discordBtn;
-            focusTarget?.focus();
-        });
+         const titleKey = type === 'discord' ? 'modal_discord_title' : 'modal_funpay_title';
+         Cache.modal.title.textContent = getTranslation(titleKey, state.currentLang, { productName });
+
+         const descKeyResolved = type === 'discord' ? descKeyOrProduct : 'modal_funpay_desc';
+         Cache.modal.description.textContent = getTranslation(descKeyResolved, state.currentLang, { productName });
+
+         Cache.modal.footer.innerHTML = '';
+
+         if (type === 'discord') {
+             const discordButtonTemplate = Cache.discordButtonTemplate?.content.firstElementChild;
+             if (discordButtonTemplate) {
+                const discordButtonClone = discordButtonTemplate.cloneNode(true);
+                const span = discordButtonClone.querySelector('span');
+                 if (span) span.textContent = getTranslation('modal_discord_button');
+                 Cache.modal.footer.appendChild(discordButtonClone);
+            }
+
+         } else if (type === 'funpay') {
+            if (monthUrl) {
+                 const monthButton = document.createElement('a');
+                 monthButton.href = monthUrl;
+                 monthButton.target = "_blank";
+                 monthButton.rel = "noopener noreferrer";
+                 monthButton.className = "btn btn-funpay";
+                 monthButton.textContent = getTranslation('modal_funpay_button_month');
+                 Cache.modal.footer.appendChild(monthButton);
+             }
+             if (lifetimeUrl) {
+                 const lifetimeButton = document.createElement('a');
+                 lifetimeButton.href = lifetimeUrl;
+                 lifetimeButton.target = "_blank";
+                 lifetimeButton.rel = "noopener noreferrer";
+                 lifetimeButton.className = "btn btn-funpay";
+                 lifetimeButton.textContent = getTranslation('modal_funpay_button_lifetime');
+                 Cache.modal.footer.appendChild(lifetimeButton);
+            }
+         }
     };
+
+     const handleBuyButtonClick = (event) => {
+         const button = event.currentTarget;
+         const modalType = button.dataset.modalType;
+         const nameKey = button.dataset.productNameKey;
+         const descKey = button.dataset.productKey; // For Discord description
+         const monthUrl = button.dataset.funpayMonthUrl || '';
+         const lifetimeUrl = button.dataset.funpayLifetimeUrl || '';
+
+         state.lastModalTrigger = button;
+         displayModalContent(modalType, nameKey, descKey, monthUrl, lifetimeUrl);
+
+         Cache.modal.overlay.classList.add('active');
+         Cache.modal.element.classList.add('active');
+         updateBodyScrollLock();
+         resetModalGlow();
+         requestAnimationFrame(() => {
+             Cache.modal.closeBtn?.focus();
+         });
+    };
+
     const closeModal = () => {
         Cache.modal.overlay.classList.remove('active');
         Cache.modal.element.classList.remove('active');
         updateBodyScrollLock();
+        handleModalMouseLeave(); // Ensure glow fades out
         if (state.lastModalTrigger) {
             state.lastModalTrigger.focus();
             state.lastModalTrigger = null;
         }
     };
 
-    // --- Navigation Active Link (No changes needed) ---
+    const updateModalGlow = () => {
+        if (!Cache.modal.borderGlow || !state.isModalOpen) {
+             state.rafModalGlowPending = false;
+            return;
+        }
+        state.modalMouseX = lerp(state.modalMouseX, state.targetModalMouseX, 0.08);
+        state.modalMouseY = lerp(state.modalMouseY, state.targetModalMouseY, 0.08);
+
+        Cache.modal.borderGlow.style.setProperty('--modal-glow-x', `${state.modalMouseX}%`);
+        Cache.modal.borderGlow.style.setProperty('--modal-glow-y', `${state.modalMouseY}%`);
+
+        if (state.isModalOpen && (Math.abs(state.modalMouseX - state.targetModalMouseX) > 0.1 || Math.abs(state.modalMouseY - state.targetModalMouseY) > 0.1)) {
+            requestAnimationFrame(updateModalGlow);
+         } else {
+            state.rafModalGlowPending = false;
+         }
+    };
+
+    const handleModalMouseMove = (e) => {
+         if (!state.isModalOpen || !Cache.modal.element) return;
+        const rect = Cache.modal.element.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        state.targetModalMouseX = Math.max(0, Math.min(100, x)); // Clamp values
+        state.targetModalMouseY = Math.max(0, Math.min(100, y));
+
+        Cache.modal.borderGlow?.style.setProperty('--modal-glow-opacity', '0.6');
+
+        if (!state.rafModalGlowPending) {
+             state.rafModalGlowPending = true;
+            requestAnimationFrame(updateModalGlow);
+        }
+    };
+
+    const handleModalMouseLeave = () => {
+         if (Cache.modal.borderGlow) {
+            Cache.modal.borderGlow.style.setProperty('--modal-glow-opacity', '0');
+        }
+        state.rafModalGlowPending = false;
+    };
+
+     const resetModalGlow = () => {
+         if (Cache.modal.borderGlow) {
+             Cache.modal.borderGlow.style.setProperty('--modal-glow-opacity', '0');
+             Cache.modal.borderGlow.style.setProperty('--modal-glow-x', `50%`);
+             Cache.modal.borderGlow.style.setProperty('--modal-glow-y', `50%`);
+             state.targetModalMouseX = 50;
+             state.targetModalMouseY = 50;
+             state.modalMouseX = 50;
+             state.modalMouseY = 50;
+         }
+         state.rafModalGlowPending = false;
+     }
+
     const updateActiveLink = () => {
         let currentSectionId = 'hero';
         const scrollY = window.pageYOffset;
@@ -432,14 +522,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         if ((window.innerHeight + scrollY) >= document.documentElement.scrollHeight - 70) {
-             currentSectionId = Cache.sections[Cache.sections.length - 1]?.id || currentSectionId;
+             if (Cache.sections.length > 0) {
+                  currentSectionId = Cache.sections[Cache.sections.length - 1]?.id || currentSectionId;
+             }
         }
         Cache.nav.links.forEach(link => {
             link.classList.toggle('active', link.getAttribute('href') === `#${currentSectionId}`);
         });
     };
 
-    // --- Scroll Handling (No changes needed) ---
     const handleScroll = () => {
         state.lastScrollY = window.pageYOffset;
         if (!state.rafScrollPending) {
@@ -453,15 +544,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- Interactive Background Mouse Glow (No changes needed) ---
     const updateInteractiveBg = () => {
         if (!Cache.interactiveBg) return;
         state.mouseX = lerp(state.mouseX, state.targetMouseX, 0.045);
         state.mouseY = lerp(state.mouseY, state.targetMouseY, 0.045);
         Cache.interactiveBg.style.setProperty('--mouse-x', `${(state.mouseX / window.innerWidth) * 100}%`);
         Cache.interactiveBg.style.setProperty('--mouse-y', `${(state.mouseY / window.innerHeight) * 100}%`);
-        state.rafMouseBgPending = false;
+
+        if (Math.abs(state.mouseX - state.targetMouseX) > 0.1 || Math.abs(state.mouseY - state.targetMouseY) > 0.1) {
+            requestAnimationFrame(updateInteractiveBg);
+         } else {
+            state.rafMouseBgPending = false;
+         }
     };
+
     const handleMouseMove = (e) => {
         state.targetMouseX = e.clientX;
         state.targetMouseY = e.clientY;
@@ -469,9 +565,11 @@ document.addEventListener('DOMContentLoaded', () => {
             state.rafMouseBgPending = true;
             requestAnimationFrame(updateInteractiveBg);
         }
+        if (state.isModalOpen) {
+            handleModalMouseMove(e);
+        }
     };
 
-    // --- Initialize Scroll Animations (No changes needed) ---
     const initScrollAnimations = () => {
         const observerOptions = { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.08 };
         const observerCallback = (entries, observer) => {
@@ -492,7 +590,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // --- Initialize Load Animations (No changes needed) ---
     const initLoadAnimations = () => {
         Cache.loadAnimElements.forEach(el => {
             if (!el.classList.contains('stagger-letters')) {
@@ -501,10 +598,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => el.classList.add('visible'), 50 + delayTime);
             }
         });
-        initStaggerAnimation(); // Call initially too
     };
 
-    // --- Navigation Link Click Handling (No changes needed) ---
     const handleNavLinkClick = function (e) {
         const targetId = this.getAttribute('href');
         if (targetId?.startsWith('#') && targetId.length > 1) {
@@ -515,60 +610,78 @@ document.addEventListener('DOMContentLoaded', () => {
                 const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
                 window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
 
-                if (Cache.nav.list?.classList.contains('active')) toggleNav();
+                if (Cache.nav.list?.classList.contains('active')) {
+                    toggleNav(e);
+                }
                  Cache.nav.links.forEach(link => link.classList.remove('active'));
                  this.classList.add('active');
             }
         }
     };
 
-    // --- Mobile Navigation Toggle (No changes needed) ---
     const toggleNav = (e) => {
         e?.stopPropagation();
-        const isActive = Cache.nav.burger.classList.toggle('active');
-        Cache.nav.list.classList.toggle('active');
-        Cache.nav.burger.setAttribute('aria-expanded', String(isActive));
+        const burger = Cache.nav.burger;
+        const navList = Cache.nav.list;
+        if (!burger || !navList) return;
+
+        const isActive = burger.classList.toggle('active');
+        navList.classList.toggle('active');
+        burger.setAttribute('aria-expanded', String(isActive));
         updateBodyScrollLock();
     };
     const closeNavOnClickOutside = (e) => {
         if (Cache.nav.list?.classList.contains('active') &&
             !Cache.nav.list.contains(e.target) &&
             !Cache.nav.burger?.contains(e.target)) {
-             toggleNav();
+             toggleNav(e);
         }
     };
 
-    // --- Keyboard Event Handling (No changes needed) ---
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
             if (state.isModalOpen) closeModal();
-            else if (state.isNavOpen) toggleNav();
+            else if (state.isNavOpen) toggleNav(event);
         }
-        if (event.key === 'Tab' && state.isModalOpen) {
-             const modalEl = Cache.modal.element;
-             const focusable = Array.from(modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+        if (event.key === 'Tab' && state.isModalOpen && Cache.modal.element) {
+             const focusable = Array.from(Cache.modal.element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
                                   .filter(el => el.offsetParent !== null);
-             if (!focusable.length) return event.preventDefault();
+             if (!focusable.length) { event.preventDefault(); return; }
+
              const first = focusable[0];
              const last = focusable[focusable.length - 1];
              const current = document.activeElement;
 
-             if (event.shiftKey && current === first) { last.focus(); event.preventDefault(); }
-             else if (!event.shiftKey && current === last) { first.focus(); event.preventDefault(); }
-             else if (!focusable.includes(current)) { first.focus(); event.preventDefault();}
+             if (event.shiftKey && current === first) {
+                last.focus();
+                event.preventDefault();
+             } else if (!event.shiftKey && current === last) {
+                first.focus();
+                event.preventDefault();
+             } else if (!focusable.includes(current)) {
+                  first.focus();
+                  event.preventDefault();
+             }
         }
     };
 
-    // --- Card Tilt Effect (No changes needed) ---
     const handleCardTilt = (card, event) => {
-        if (state.rafTiltPending[card.uniqueId]) return;
+        if (!card || card.uniqueId === undefined || state.rafTiltPending[card.uniqueId]) return;
         state.rafTiltPending[card.uniqueId] = true;
 
         requestAnimationFrame(() => {
+             if (!card.parentNode) {
+                  state.rafTiltPending[card.uniqueId] = false;
+                  return;
+             }
             const rect = card.getBoundingClientRect();
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
             const { width, height } = rect;
+             if (width <= 0 || height <= 0) {
+                  state.rafTiltPending[card.uniqueId] = false;
+                  return;
+             }
 
             const maxRotate = 4;
             const rotateX = ((y / height) - 0.5) * -maxRotate;
@@ -583,17 +696,20 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.setProperty('--card-shine-y', `${shineY.toFixed(2)}%`);
             card.style.transition = 'none';
 
-             state.rafTiltPending[card.uniqueId] = false;
+            state.rafTiltPending[card.uniqueId] = false;
         });
     };
     const resetCardTilt = (card) => {
+         if (!card || card.uniqueId === undefined) return;
+         card.style.setProperty('--card-shine-opacity', '0');
+         state.rafTiltPending[card.uniqueId] = false;
+
          requestAnimationFrame(() => {
+             if (!card.parentNode) return;
              card.style.transition = 'transform 0.5s var(--ease-out-cubic), --card-shine-opacity 0.5s ease, --card-rotation-x 0.5s var(--ease-out-cubic), --card-rotation-y 0.5s var(--ease-out-cubic)';
              card.style.setProperty('--card-rotation-x', '0deg');
              card.style.setProperty('--card-rotation-y', '0deg');
-             card.style.setProperty('--card-shine-opacity', '0');
          });
-         state.rafTiltPending[card.uniqueId] = false;
     };
     let cardTiltCounter = 0;
     const initCardTilt = () => {
@@ -601,15 +717,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const cards = container.querySelectorAll('.card-with-tilt');
             cards.forEach(card => {
                 card.uniqueId = `card-${cardTiltCounter++}`;
-                card.addEventListener('mousemove', (e) => handleCardTilt(card, e), { passive: true });
-                card.addEventListener('mouseleave', () => resetCardTilt(card));
-                card.addEventListener('focusout', () => resetCardTilt(card));
-                card.addEventListener('blur', () => resetCardTilt(card));
+                 if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+                     card.addEventListener('mousemove', (e) => handleCardTilt(card, e), { passive: true });
+                     card.addEventListener('mouseleave', () => resetCardTilt(card));
+                 }
+                 card.addEventListener('focus', () => resetCardTilt(card));
+                 card.addEventListener('blur', () => resetCardTilt(card));
             });
         });
     };
 
-    // --- Event Listeners Setup (No changes needed) ---
     const setupEventListeners = () => {
         Cache.lang.buttons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.lang)));
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -618,33 +735,34 @@ document.addEventListener('DOMContentLoaded', () => {
              Cache.html.style.setProperty('--scrollbar-width', `${state.scrollbarWidth}px`);
             updateActiveLink();
         }, { passive: true });
+
         document.addEventListener('mousemove', handleMouseMove, { passive: true });
+        if (Cache.modal.element) {
+            Cache.modal.element.addEventListener('mousemove', handleModalMouseMove, { passive: true });
+            Cache.modal.element.addEventListener('mouseleave', handleModalMouseLeave);
+        }
+
         Cache.nav.links.forEach(anchor => anchor.addEventListener('click', handleNavLinkClick));
         if (Cache.nav.burger) Cache.nav.burger.addEventListener('click', toggleNav);
         document.addEventListener('click', closeNavOnClickOutside);
         document.addEventListener('keydown', handleKeyDown);
 
-        Cache.buyButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                const nameKey = event.currentTarget.dataset.productNameKey;
-                const descKey = event.currentTarget.dataset.productKey;
-                state.lastModalTrigger = event.currentTarget;
-                openModal(nameKey, descKey);
-            });
+        Cache.productButtons.forEach(button => {
+            button.addEventListener('click', handleBuyButtonClick);
         });
+
         if (Cache.modal.closeBtn) Cache.modal.closeBtn.addEventListener('click', closeModal);
         if (Cache.modal.overlay) Cache.modal.overlay.addEventListener('click', closeModal);
         if (Cache.termsLink) {
             Cache.termsLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                const alertText = { ru: "Условия использования (заглушка)", en: "Terms of Use (placeholder)", es: "Términos de Uso (marcador)" };
-                alert(alertText[state.currentLang] || alertText.en);
+                 alert(getTranslation('terms_link') + ' (placeholder)');
             });
         }
     };
 
-    // --- Initialization (No changes needed) ---
     const initialize = () => {
+        Cache.body.classList.add('preload');
         state.scrollbarWidth = getScrollbarWidth();
         Cache.html.style.setProperty('--scrollbar-width', `${state.scrollbarWidth}px`);
         let preferredLang = 'ru';
@@ -653,15 +771,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const browserLang = navigator.language?.substring(0, 2);
             if (storedLang && translations[storedLang]) { preferredLang = storedLang; }
             else if (browserLang && translations[browserLang]) { preferredLang = browserLang; }
-        } catch (e) { }
+        } catch (e) {}
+
         setLanguage(preferredLang);
         setupEventListeners();
         initScrollAnimations();
         initLoadAnimations();
         initCardTilt();
         handleScroll();
-        setTimeout(() => Cache.body.classList.remove('preload'), 80);
+        updateActiveLink();
+
+        setTimeout(() => Cache.body.classList.remove('preload'), 100);
     };
 
-    initialize(); // Start everything
+    initialize();
 });
