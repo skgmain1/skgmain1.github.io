@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXPENSIVE.CC | PREMIUM</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #030303;
+            --purple: #9d00ff;
+            --purple-glow: rgba(157, 0, 255, 0.5);
+            --white: #ffffff;
+            --discord: #5865F2;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%;
+            background-color: var(--bg);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        button { border: none; outline: none; background: none; font-family: inherit; cursor: pointer; }
+
+        #webgl {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: 1; pointer-events: none;
+        }
+
+        .vignette {
+            position: fixed; inset: 0; z-index: 2; pointer-events: none;
+            background: radial-gradient(circle, transparent 40%, #000 120%);
+        }
+        .scanlines {
+            position: fixed; inset: 0; z-index: 3; pointer-events: none;
+            background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.1) 50%);
+            background-size: 100% 4px;
+        }
+
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 25px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 50; box-sizing: border-box;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .brand { font-weight: 800; font-size: 20px; letter-spacing: -0.5px; color: #fff; }
+        
+        .discord-btn {
+            display: flex; align-items: center; gap: 8px;
+            padding: 8px 20px;
+            background: rgba(88, 101, 242, 0.1);
+            border: 1px solid rgba(88, 101, 242, 0.3);
+            border-radius: 4px;
+            color: #fff;
+            font-size: 12px; font-weight: 700; letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(88, 101, 242, 0.1);
+        }
+        .discord-btn:hover {
+            background: rgba(88, 101, 242, 0.8);
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.6);
+            border-color: #fff; transform: translateY(-2px);
+        }
+
+        .hero-wrap {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            display: flex; flex-direction: column; justify-content: center;
+            padding-left: 8vw;
+            z-index: 10;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        h1 {
+            font-size: 6rem; line-height: 0.9; margin: 0;
+            font-weight: 800; color: #fff;
+            letter-spacing: -0.04em; text-transform: uppercase;
+            text-shadow: 0 0 50px rgba(157, 0, 255, 0.2);
+        }
+        h1 span { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.5); }
+        .sub-hero {
+            margin-top: 20px; font-family: 'JetBrains Mono', monospace;
+            color: var(--purple); font-size: 16px; letter-spacing: 2px;
+        }
+
+        .scroll-spacer { height: 120vh; width: 100%; }
+
+        .content-bg {
+            position: relative; z-index: 20;
+            background: linear-gradient(to bottom, transparent, rgba(5,5,5,0.7) 20%, rgba(5,5,5,0.9) 100%);
+            padding-bottom: 100px;
+            min-height: 100vh;
+            backdrop-filter: blur(2px);
+        }
+
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 30px; }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating { animation: float 6s ease-in-out infinite; }
+
+        .pay-tabs {
+            display: flex; gap: 10px; margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
+        }
+        .pay-tab {
+            font-size: 11px; font-weight: 700; color: #666; text-transform: uppercase;
+            padding: 5px 10px; border-radius: 4px; transition: 0.3s;
+        }
+        .pay-tab.active { background: rgba(157, 0, 255, 0.2); color: var(--purple); }
+        .pay-tab:hover { color: #fff; }
+
+        .pay-content { display: none; animation: fadeIn 0.3s; }
+        .pay-content.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+
+        .premium-card {
+            background: rgba(12, 12, 16, 0.6);
+            border: 1px solid rgba(157, 0, 255, 0.3);
+            border-radius: 16px;
+            display: grid; grid-template-columns: 1fr 1.5fr;
+            overflow: hidden;
+            box-shadow: 0 0 80px rgba(157, 0, 255, 0.05);
+            margin-bottom: 100px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .p-left {
+            padding: 40px; border-right: 1px solid rgba(255,255,255,0.1);
+            display: flex; flex-direction: column;
+            background: linear-gradient(135deg, rgba(157,0,255,0.1), transparent);
+        }
+        .p-right { padding: 40px; }
+
+        .buy-row {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px; margin-bottom: 8px; border-radius: 4px;
+            transition: 0.2s; cursor: pointer;
+        }
+        .buy-row:hover {
+            background: rgba(157, 0, 255, 0.2);
+            border-color: var(--purple); transform: translateX(5px);
+        }
+        .buy-label { font-size: 12px; color: #ccc; font-weight: 600; }
+        .buy-price { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--purple); }
+
+        .direct-pay-info {
+            font-size: 11px; color: #888; margin-bottom: 10px; line-height: 1.4;
+        }
+        .direct-methods {
+            font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--purple); margin-bottom: 15px;
+        }
+
+        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .f-item { display: flex; gap: 10px; }
+        .f-num { color: var(--purple); font-family: 'JetBrains Mono', monospace; font-size: 12px; padding-top: 2px;}
+        .f-content b { display: block; font-size: 13px; color: #fff; margin-bottom: 2px; }
+        .f-content p { margin: 0; font-size: 11px; color: #777; line-height: 1.4; }
+
+        .grid-cards {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;
+        }
+
+        .card {
+            background: rgba(20, 20, 25, 0.5);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; padding: 25px;
+            transition: transform 0.3s, background 0.3s;
+            position: relative; backdrop-filter: blur(8px);
+            display: flex; flex-direction: column;
+        }
+        
+        .card:hover {
+            background: rgba(20, 20, 25, 0.8);
+            border-color: rgba(157, 0, 255, 0.5);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .card h3 { margin: 0 0 5px 0; font-size: 20px; font-weight: 700; color: #fff; }
+        .card-desc { font-size: 12px; color: #aaa; margin-bottom: 20px; min-height: 35px; }
+
+        .status-dot {
+            width: 8px; height: 8px; background: #00ff88; border-radius: 50%;
+            display: inline-block; margin-right: 8px; box-shadow: 0 0 5px #00ff88;
+        }
+        .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .sys-tag { font-size: 10px; border: 1px solid #333; padding: 2px 6px; border-radius: 4px; color: #888; text-transform: uppercase; }
+
+        @media (max-width: 900px) {
+            .premium-card { grid-template-columns: 1fr; }
+            h1 { font-size: 3.5rem; }
+        }
+    </style>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div id="webgl"></div>
+    <div class="vignette"></div>
+    <div class="scanlines"></div>
+
+    <nav>
+        <div class="brand">EXPENSIVE.CC</div>
+        <div>
+            <a href="https://discord.gg/cgBcNPnJwz" target="_blank" class="discord-btn">
+                <i class="fa-brands fa-discord"></i> Community
+            </a>
+        </div>
+    </nav>
+
+    <div class="hero-wrap" id="hero">
+        <h1>
+            Expensive<br>
+            <span>HUB</span>
+        </h1>
+        <div class="sub-hero">PREMIUM AUTOMATION SCRIPT HUB</div>
+    </div>
+
+    <div class="scroll-spacer"></div>
+
+    <div class="content-bg">
+        <div class="container">
+            
+            <div class="premium-card reveal-on-scroll floating">
+                <div class="p-left">
+                    <div>
+                        <div style="color:var(--purple); font-weight:bold; margin-bottom:10px; font-size:12px;">★ BEST SELLER</div>
+                        <h2 style="margin:0; font-size:40px; line-height:1;">GPO 3.0</h2>
+                        <p style="color:#aaa; font-size:13px; margin:15px 0 20px 0;">
+                            The absolute market leader for Grand Piece Online.
+                        </p>
+                    </div>
+
+                    <div class="pay-tabs">
+                        <button class="pay-tab active" onclick="switchTab(this, 'funpay')">Funpay</button>
+                        <button class="pay-tab" onclick="switchTab(this, 'direct')">Direct</button>
+                    </div>
+
+                    <div class="pay-content active" data-type="funpay">
+                        <a href="https://funpay.com/lots/offer?id=46712681" target="_blank" class="buy-row">
+                            <span class="buy-label">1 Month Access</span>
+                            <span class="buy-price">15$ / 1400₽</span>
+                        </a>
+                        <a href="https://funpay.com/lots/offer?id=46712699" target="_blank" class="buy-row" style="border-color: rgba(157,0,255,0.4); background: rgba(157,0,255,0.1);">
+                            <span class="buy-label" style="color:#fff;">Lifetime Access</span>
+                            <span class="buy-price">35$ / 3200₽</span>
+                        </a>
+                    </div>
+
+                    <div class="pay-content" data-type="direct">
+                        <div class="direct-pay-info">
+                            Purchase directly via Ticket. Instant delivery.
+                        </div>
+                        <div class="direct-methods">
+                            PIX / CRYPTO / PAYPAL / GIFTCARDS / ROBUX
+                        </div>
+                        <a href="https://discord.gg/cgBcNPnJwz" target="_blank" class="buy-row discord-btn" style="justify-content:center; text-align:center;">
+                            OPEN TICKET
+                        </a>
+                    </div>
+                </div>
+
+                <div class="p-right">
+                    <div class="feature-grid">
+                        <div class="f-item"><div class="f-num">01</div><div class="f-content"><b>Level Farming</b><p>Kaitun v1 & v2 Fully Automated</p></div></div>
+                        <div class="f-item"><div class="f-num">02</div><div class="f-content"><b>Mythical Chests</b><p>Bypassed Shadow Bans, Optimized & Stable</p></div></div>
+                        <div class="f-item"><div class="f-num">03</div><div class="f-content"><b>Impel Down</b><p>Full Dungeon Automation</p></div></div>
+                        <div class="f-item"><div class="f-num">04</div><div class="f-content"><b>Battle Royale</b><p>Hitbox, Speed, Desync</p></div></div>
+                        <div class="f-item"><div class="f-num">05</div><div class="f-content"><b>Auto Juzo</b><p>Advanced Fast Low Requirements Farming</p></div></div>
+                        <div class="f-item"><div class="f-num">06</div><div class="f-content"><b>Santa Farming</b><p>Humanized Farming, Low Req & Fully Safe</p></div></div>
+                        <div class="f-item"><div class="f-num">07</div><div class="f-content"><b>Visuals</b><p>Player ESP, Chest ESP, Fruits</p></div></div>
+                        <div class="f-item"><div class="f-num">08</div><div class="f-content"><b>Bounty</b><p>Auto Bounty Farming System</p></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-on-scroll" style="margin-bottom: 40px; font-size:12px; color:#777; text-transform:uppercase; letter-spacing:2px; padding-left:10px; border-left:2px solid var(--purple);">
+                Available scripts
+            </div>
+
+            <div class="grid-cards">
+                
+                <div class="card reveal-on-scroll floating" style="animation-delay: 0.1s;">
+                    <div class="header-row">
+                        <div class="status-dot"></div>
+                        <span class="sys-tag">AUT</span>
+                    </div>
+                    <h3>Expensive Hub v2</h3>
+                    <div class="card-desc">The best auto-farmer system. Supporting 50+ games.</div>
+                    
+                    <div class="pay-tabs">
+                        <button class="pay-tab active" onclick="switchTab(this, 'funpay')">Funpay</button>
+                        <button class="pay-tab" onclick="switchTab(this, 'direct')">Direct</button>
+                    </div>
+
+                    <div class="pay-content active" data-type="funpay">
+                        <a href="https://funpay.com/lots/offer?id=41114416" target="_blank" class="buy-row">
+                            <span class="buy-label">1 Month</span>
+                            <span class="buy-price">10$ / 800₽</span>
+                        </a>
+                        <a href="https://funpay.com/lots/offer?id=21798029" target="_blank" class="buy-row">
+                            <span class="buy-label">Lifetime</span>
+                            <span class="buy-price">25$ / 1800₽</span>
+                        </a>
+                    </div>
+                    <div class="pay-content" data-type="direct">
+                        <div class="direct-methods">PIX / CRYPTO / PAYPAL / GIFTCARDS</div>
+                        <a href="https://discord.gg/cgBcNPnJwz" target="_blank" class="buy-row discord-btn" style="justify-content:center;">OPEN TICKET</a>
+                    </div>
+                </div>
+
+                <div class="card reveal-on-scroll floating" style="animation-delay: 0.2s;">
+                    <div class="header-row">
+                        <div class="status-dot"></div>
+                        <span class="sys-tag">RPG</span>
+                    </div>
+                    <h3>Dungeon Quest</h3>
+                    <div class="card-desc">InstaKill, Infinity Raids, Automatically Every Dungeons.</div>
+
+                    <div class="pay-tabs">
+                        <button class="pay-tab active" onclick="switchTab(this, 'funpay')">Funpay</button>
+                        <button class="pay-tab" onclick="switchTab(this, 'direct')">Direct</button>
+                    </div>
+
+                    <div class="pay-content active" data-type="funpay">
+                        <a href="https://funpay.com/lots/offer?id=51874694" target="_blank" class="buy-row">
+                            <span class="buy-label">1 Month</span>
+                            <span class="buy-price">10$ / 800₽</span>
+                        </a>
+                        <a href="https://funpay.com/lots/offer?id=51874750" target="_blank" class="buy-row">
+                            <span class="buy-label">Lifetime</span>
+                            <span class="buy-price">25$ / 2000₽</span>
+                        </a>
+                    </div>
+                    <div class="pay-content" data-type="direct">
+                        <div class="direct-methods">PIX / CRYPTO / PAYPAL / GIFTCARDS</div>
+                        <a href="https://discord.gg/cgBcNPnJwz" target="_blank" class="buy-row discord-btn" style="justify-content:center;">OPEN TICKET</a>
+                    </div>
+                </div>
+
+                <div class="card reveal-on-scroll floating" style="animation-delay: 0.3s;">
+                    <div class="header-row">
+                        <div class="status-dot"></div>
+                        <span class="sys-tag">RNG</span>
+                    </div>
+                    <h3>Steal a Brainrot</h3>
+                    <div class="card-desc">RNG Automation, auto-roll and farming utility.</div>
+
+                    <div class="pay-tabs">
+                        <button class="pay-tab active" onclick="switchTab(this, 'funpay')">Funpay</button>
+                        <button class="pay-tab" onclick="switchTab(this, 'direct')">Direct</button>
+                    </div>
+
+                    <div class="pay-content active" data-type="funpay">
+                        <a href="https://funpay.com/lots/offer?id=47102140" target="_blank" class="buy-row">
+                            <span class="buy-label">1 Month</span>
+                            <span class="buy-price">7.5$ / 650₽</span>
+                        </a>
+                        <a href="https://funpay.com/lots/offer?id=50606339" target="_blank" class="buy-row">
+                            <span class="buy-label">Lifetime</span>
+                            <span class="buy-price">20$ / 1800₽</span>
+                        </a>
+                    </div>
+                    <div class="pay-content" data-type="direct">
+                        <div class="direct-methods">PIX / CRYPTO / PAYPAL / GIFTCARDS</div>
+                        <a href="https://discord.gg/cgBcNPnJwz" target="_blank" class="buy-row discord-btn" style="justify-content:center;">OPEN TICKET</a>
+                    </div>
+                </div>
+
+                <div class="card reveal-on-scroll floating" style="animation-delay: 0.4s;">
+                    <div class="header-row">
+                        <div class="status-dot"></div>
+                        <span class="sys-tag">ANIME</span>
+                    </div>
+                    <h3>Jujutsu Kaisen</h3>
+                    <div class="card-desc">Sorcerer automation, auto-grip, fast farm.</div>
+
+                    <div class="pay-tabs">
+                        <button class="pay-tab active" onclick="switchTab(this, 'funpay')">Funpay</button>
+                        <button class="pay-tab" onclick="switchTab(this, 'direct')">Direct</button>
+                    </div>
+
+                    <div class="pay-content active" data-type="funpay">
+                        <a href="https://funpay.com/lots/offer?id=41153176" target="_blank" class="buy-row">
+                            <span class="buy-label">1 Month</span>
+                            <span class="buy-price">7.5$ / 750₽</span>
+                        </a>
+                        <a href="https://funpay.com/lots/offer?id=36817563" target="_blank" class="buy-row">
+                            <span class="buy-label">Lifetime</span>
+                            <span class="buy-price">15$ / 1500₽</span>
+                        </a>
+                    </div>
+                    <div class="pay-content" data-type="direct">
+                        <div class="direct-methods">PIX / CRYPTO / PAYPAL / GIFTCARDS</div>
+                        <a href="https://discord.gg/cgBcNPnJwz" target="_blank" class="buy-row discord-btn" style="justify-content:center;">OPEN TICKET</a>
+                    </div>
+                </div>
+
+                <div class="card reveal-on-scroll floating" style="animation-delay: 0.5s;">
+                    <div class="header-row">
+                        <div class="status-dot"></div>
+                        <span class="sys-tag">LEGACY</span>
+                    </div>
+                    <h3>YBA Key</h3>
+                    <div class="card-desc">Your Bizarre Adventure script for item farming.</div>
+
+                    <div class="pay-tabs">
+                        <button class="pay-tab active" onclick="switchTab(this, 'funpay')">Funpay</button>
+                        <button class="pay-tab" onclick="switchTab(this, 'direct')">Direct</button>
+                    </div>
+
+                    <div class="pay-content active" data-type="funpay">
+                        <a href="https://funpay.com/lots/offer?id=47590770" target="_blank" class="buy-row">
+                            <span class="buy-label">1 Month</span>
+                            <span class="buy-price">5$ / 400₽</span>
+                        </a>
+                    </div>
+                    <div class="pay-content" data-type="direct">
+                        <div class="direct-methods">PIX / CRYPTO / PAYPAL / GIFTCARDS</div>
+                        <a href="https://discord.gg/cgBcNPnJwz" target="_blank" class="buy-row discord-btn" style="justify-content:center;">OPEN TICKET</a>
+                    </div>
+                </div>
+
+                 <div class="card reveal-on-scroll floating" style="animation-delay: 0.6s;">
+                    <div class="header-row">
+                        <div class="status-dot"></div>
+                        <span class="sys-tag">KAITUN</span>
+                    </div>
+                    <h3>99 Nights</h3>
+                    <div class="card-desc">Fastest farming solution for 99 Nights.</div>
+
+                    <div class="pay-tabs">
+                        <button class="pay-tab active" onclick="switchTab(this, 'funpay')">Funpay</button>
+                        <button class="pay-tab" onclick="switchTab(this, 'direct')">Direct</button>
+                    </div>
+
+                    <div class="pay-content active" data-type="funpay">
+                        <a href="https://funpay.com/lots/offer?id=48842097" target="_blank" class="buy-row">
+                            <span class="buy-label">1 Month</span>
+                            <span class="buy-price">5$ / 400₽</span>
+                        </a>
+                    </div>
+                    <div class="pay-content" data-type="direct">
+                        <div class="direct-methods">PIX / CRYPTO / PAYPAL / GIFTCARDS</div>
+                        <a href="https://discord.gg/cgBcNPnJwz" target="_blank" class="buy-row discord-btn" style="justify-content:center;">OPEN TICKET</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <footer style="margin-top:100px; padding: 40px; border-top:1px solid rgba(255,255,255,0.05); text-align:center; color:#555; font-size:12px;">
+                © 2026 Expensive Systems. Not affiliated with Roblox Corporation.
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(btn, type) {
+            const parent = btn.closest('.premium-card, .card');
+            const tabs = parent.querySelectorAll('.pay-tab');
+            const contents = parent.querySelectorAll('.pay-content');
+
+            tabs.forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+
+            contents.forEach(c => {
+                c.classList.remove('active');
+                if(c.dataset.type === type) c.classList.add('active');
+            });
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+        const CFG = {
+            lines: 1200,
+            whiteColor: new THREE.Color(0xffffff),
+            purpleColor: new THREE.Color(0x9d00ff), 
+            bloomStr: 2.5,
+            bloomRad: 0.4
+        };
+
+        const container = document.getElementById('webgl');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x030303, 0.02);
+
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 18);
+        camera.rotation.z = -0.15;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        container.appendChild(renderer.domElement);
+
+        const logoGroup = new THREE.Group();
+        const matWhite = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const matPurple = new THREE.MeshBasicMaterial({ color: 0x9d00ff });
+
+        const eGroup = new THREE.Group();
+        const spine = new THREE.Mesh(new THREE.BoxGeometry(0.5, 4, 0.5), matWhite);
+        spine.position.set(-0.7, 0, 0); 
+        const topBar = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.5, 0.5), matWhite); topBar.position.set(0.2, 1.75, 0);
+        const midBar = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.5, 0.5), matWhite); midBar.position.set(0.05, 0, 0);
+        const botBar = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.5, 0.5), matWhite); botBar.position.set(0.2, -1.75, 0);
+        eGroup.add(spine, topBar, midBar, botBar);
+        eGroup.position.set(-1.8, 0, 0);
+        logoGroup.add(eGroup);
+
+        const hGroup = new THREE.Group();
+        const hLeft = new THREE.Mesh(new THREE.BoxGeometry(0.5, 4, 0.5), matPurple); hLeft.position.set(-0.8, 0, 0);
+        const hRight = new THREE.Mesh(new THREE.BoxGeometry(0.5, 4, 0.5), matPurple); hRight.position.set(0.8, 0, 0);
+        const hMid = new THREE.Mesh(new THREE.BoxGeometry(2, 0.5, 0.5), matPurple); hMid.position.set(0, 0, 0);
+        hGroup.add(hLeft, hRight, hMid);
+        hGroup.position.set(1.8, 0, 0);
+        logoGroup.add(hGroup);
+
+        const core = new THREE.Mesh(new THREE.IcosahedronGeometry(0.7, 0), new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true }));
+        core.position.set(0, 0, 0);
+        logoGroup.add(core);
+        
+        logoGroup.position.x = 0.5; 
+        scene.add(logoGroup);
+
+        const lineGeo = new THREE.CylinderGeometry(0.04, 0.04, 60, 3);
+        const lineMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.6 });
+        const lines = new THREE.InstancedMesh(lineGeo, lineMat, CFG.lines);
+        const rainGroup = new THREE.Group();
+        rainGroup.rotation.z = Math.PI / 4;
+        rainGroup.rotation.x = Math.PI / 10;
+        rainGroup.add(lines);
+        scene.add(rainGroup);
+
+        const dummy = new THREE.Object3D();
+        const lineData = [];
+        for(let i=0; i<CFG.lines; i++){
+            dummy.position.set((Math.random()-0.5)*300, (Math.random()-0.5)*300, (Math.random()-0.5)*150);
+            dummy.updateMatrix();
+            lines.setMatrixAt(i, dummy.matrix);
+            lineData.push({ x: dummy.position.x, y: dummy.position.y, z: dummy.position.z, speed: 1 + Math.random()*2 });
+        }
+
+        const composer = new EffectComposer(renderer);
+        composer.addPass(new RenderPass(scene, camera));
+        composer.addPass(new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), CFG.bloomStr, CFG.bloomRad, 0));
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        let scrollY = 0;
+        let time = 0;
+        const heroEl = document.getElementById('hero');
+
+        window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+
+            if(heroEl) heroEl.style.opacity = Math.max(0, 1 - scrollY/500);
+
+            camera.position.z = 18 - (scrollY * 0.01);
+            
+            logoGroup.position.z = -scrollY * 0.05;
+            logoGroup.rotation.y = time * 0.5;
+            logoGroup.rotation.x = Math.sin(time) * 0.2;
+            core.rotation.x += 0.05; core.rotation.y -= 0.05;
+
+            const scrollFactor = Math.min(scrollY / 800, 1);
+            lineMat.color.copy(CFG.whiteColor).lerp(CFG.purpleColor, scrollFactor);
+
+            const speed = 1 + (scrollY * 0.005);
+            for(let i=0; i<CFG.lines; i++){
+                const d = lineData[i];
+                d.y -= d.speed * speed;
+                if(d.y < -150) { d.y = 150; d.x = (Math.random()-0.5)*300; }
+                dummy.position.set(d.x, d.y, d.z);
+                dummy.scale.y = 1 + (speed * 0.1);
+                dummy.updateMatrix();
+                lines.setMatrixAt(i, dummy.matrix);
+            }
+            lines.instanceMatrix.needsUpdate = true;
+
+            composer.render();
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth/window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            composer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
